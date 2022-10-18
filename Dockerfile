@@ -1,8 +1,22 @@
-    FROM ubuntu 
-    RUN apt update 
-    RUN apt install apache2 -y 
-    RUN apt install apache2-utils -y
-    RUN apt clean 
-    EXPOSE 80
-    CMD ["apache2-foreground"]
 
+
+FROM ubuntu
+
+# File Author / Maintainer
+MAINTAINER rmuktader
+
+# Update the repository sources list
+RUN apt-get update
+
+# Install and run apache
+RUN apt-get install -y apache2 && apt-get clean
+
+#ENTRYPOINT ["/usr/sbin/apache2", "-k", "start"]
+
+
+#ENV APACHE_RUN_USER www-data
+#ENV APACHE_RUN_GROUP www-data
+#ENV APACHE_LOG_DIR /var/log/apache2
+
+EXPOSE 80
+CMD apachectl -D FOREGROUND
