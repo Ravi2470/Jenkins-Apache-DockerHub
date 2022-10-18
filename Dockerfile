@@ -4,5 +4,5 @@
     RUN apt install apache2-utils -y
     RUN apt clean 
     EXPOSE 80
-    CMD [“apachectl”, “-D”, “FOREGROUND”]
+    CMD ["apache2-foreground"]
 
