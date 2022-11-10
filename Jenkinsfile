@@ -7,7 +7,7 @@ pipeline {
     stages { 
         stage('SCM Checkout') {
             steps{
-            git 'https://https://github.com/Ravi2470/apache.git'
+            git 'https://github.com/Ravi2470/apache.git'
             }
         }
 
