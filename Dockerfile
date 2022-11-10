@@ -3,7 +3,7 @@
 FROM ubuntu
 
 # File Author / Maintainer
-MAINTAINER rmuktader
+MAINTAINER ravi
 
 # Update the repository sources list
 RUN apt-get update
