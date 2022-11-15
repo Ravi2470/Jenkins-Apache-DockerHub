@@ -1,0 +1,27 @@
+pipeline {
+    agent any 
+    environment {
+            DOCKERHUB_CREDENTIALS = "docker-credentials"
+    }    
+    stages { 
+        stage('SCM Checkout') {
+            steps{
+            git branch: 'main', url: 'https://github.com/Ravi2470/apache.git'
+            }
+        }
+
+        stage('Build docker image') {
+            steps {  
+                sh 'docker build -t ravis2470/private:$BUILD_NUMBER .'
+            }
+        }
+        
+        stage('Push Docker Images to docker Registry') {
+           steps { 
+               sh 'docker login -u ravis2470 -p Welcome@123'
+               sh 'docker push ravis2470/private:$BUILD_NUMBER'
+               sh 'docker logout'
+           }   
+        }
+    }
+}
