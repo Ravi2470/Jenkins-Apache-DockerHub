@@ -12,14 +12,14 @@ pipeline {
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t ravis2470/private:$BUILD_NUMBER .'
+                sh 'docker build -t imagename:$BUILD_NUMBER .'
             }
         }
         
         stage('Push Docker Images to docker Registry') {
            steps { 
-               sh 'docker login -u ravis2470 -p Welcome@123'
-               sh 'docker push ravis2470/private:$BUILD_NUMBER'
+               sh 'docker login -u <username> -p <password>'
+               sh 'docker push imagename:$BUILD_NUMBER'
                sh 'docker logout'
            }   
         }
