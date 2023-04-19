@@ -9,7 +9,7 @@ MAINTAINER ravi
 RUN apt-get update
 
 # Install and run apache
-RUN apt-get install -y apache2 && apt-get clean
+RUN apt-get install -y apache2
 
 #ENTRYPOINT ["/usr/sbin/apache2", "-k", "start"]
 
