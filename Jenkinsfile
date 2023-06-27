@@ -8,11 +8,11 @@ pipeline {
     stages { 
         stage('SCM Checkout') {
             steps{
-            git 'https://github.com/Ravi2470/apache.git'
+            git branch: 'main', url: 'https://github.com/Ravi2470/apache.git'
             }
         }
 
-        stage('Build docker image') {
+        stage('Build docker image') {/var/www/html/build
             steps {  
                 sh 'docker build -t ravis2470/apache:$BUILD_NUMBER .'
             }
