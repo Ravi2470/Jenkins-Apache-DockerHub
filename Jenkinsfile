@@ -1,4 +1,5 @@
 
+
 pipeline {
     agent any 
     environment {
@@ -12,7 +13,7 @@ pipeline {
             }
         }
 
-        stage('Build docker image') 
+        stage('Build docker image') {
             steps {  
                 sh 'docker build -t ravis2470/apache:$BUILD_NUMBER .'
             }
@@ -37,7 +38,7 @@ pipeline {
                 sh 'docker run -p 877:80 -d ravis2470/apache:$BUILD_NUMBER'
             } 
         } 
-} 
+    }
 post {
         always {
             sh 'docker logout'
