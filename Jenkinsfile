@@ -1,6 +1,10 @@
 
 pipeline {
     agent any 
+    environment {
+    DOCKER_USERNAME = credentials('dockerhub-username')
+    DOCKER_PASSWORD = credentials('dockerhub-password')
+    }
     stages { 
         stage('SCM Checkout') {
             steps{
@@ -15,7 +19,7 @@ pipeline {
         }
         stage('login to dockerhub') {
             steps{
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
             }
         }
         stage('push image') {
