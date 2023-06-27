@@ -27,6 +27,14 @@ pipeline {
                 sh 'docker push ravis2470/apache:$BUILD_NUMBER'
             }
         }
+        stage('pull image')
+            steps{
+                sh 'docker pull ravis2470/apache:$BUILD_NUMBER'
+            }
+        stage('create container') 
+            steps{
+                sh 'docker run -p 876:80 ravis2470/apache:$BUILD_NUMBER'
+            } 
 }
 post {
         always {
