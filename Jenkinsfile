@@ -33,7 +33,7 @@ pipeline {
             }
         stage('create container') 
             steps{
-                sh 'docker run -p 876:80 ravis2470/apache:$BUILD_NUMBER'
+                sh 'docker run -p 877:80 ravis2470/apache:$BUILD_NUMBER'
             } 
 }
 post {
