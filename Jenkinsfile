@@ -12,7 +12,7 @@ pipeline {
             }
         }
 
-        stage('Build docker image') {/var/www/html/build
+        stage('Build docker image') 
             steps {  
                 sh 'docker build -t ravis2470/apache:$BUILD_NUMBER .'
             }
@@ -27,15 +27,17 @@ pipeline {
                 sh 'docker push ravis2470/apache:$BUILD_NUMBER'
             }
         }
-        stage('pull image')
+        stage('pull image') {
             steps{
                 sh 'docker pull ravis2470/apache:$BUILD_NUMBER'
             }
-        stage('create container') 
+        }    
+        stage('create container') {
             steps{
-                sh 'docker run -p 877:80 ravis2470/apache:$BUILD_NUMBER'
+                sh 'docker run -p 877:80 -d ravis2470/apache:$BUILD_NUMBER'
             } 
-}
+        } 
+} 
 post {
         always {
             sh 'docker logout'
