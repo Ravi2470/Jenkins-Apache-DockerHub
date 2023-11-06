@@ -3,8 +3,8 @@
 pipeline {
     agent any 
     environment {
-    DOCKER_USERNAME = credentials('Dockerhub-ravi-username')
-    DOCKER_PASSWORD = credentials('Dockerhub-ravi-password')
+    DOCKER_USERNAME = credentials('dockerhub-username')
+    DOCKER_PASSWORD = credentials('dockerhub-password')
     }
     stages { 
         stage('SCM Checkout') {
